@@ -1,0 +1,67 @@
+/* HomeMenu.css */
+
+.home-menu {
+    position: relative;
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Decorative elements */
+  .decorative-images {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .decorative-left {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    transform: translateX(-30%);
+    transition: all 0.5s ease;
+  }
+  
+  .decorative-right {
+    position: absolute;
+    right: 0;
+    top: 10%;
+    transform: translateX(30%);
+    transition: all 0.5s ease;
+  }
+  
+  /* Hover animations */
+  
+  
+  
+  /* Section header styling */
+  .menu-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  /* Menu grid layout */
+  .menu-grid {
+    margin: 100px;  
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .decorative-left,
+    .decorative-right {
+      opacity: 0.1;
+      transform: scale(0.8);
+    }
+  }
