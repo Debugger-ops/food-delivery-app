@@ -1,0 +1,30 @@
+/* usertabs.css */
+
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  
+  .tab {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    color: #374151;
+    transition: background-color 0.2s ease;
+  }
+  
+  .tab:hover {
+    background-color: #e5e7eb;
+  }
+  
+  .tab.active {
+    background-color: #2563eb;
+    color: #fff;
+    border-color: #2563eb;
+  }
+  

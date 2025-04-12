@@ -1,0 +1,60 @@
+/* header.css */
+.head {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.headline {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: orangered;
+    text-decoration: none;
+}
+
+.navlink {
+    display: flex;
+    gap: 20px;
+}
+
+.n1{
+    margin: 10px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+.n5 {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+
+.n5 {
+    background-color: orangered;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.logout-btn {
+    background-color: orangered;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease-in-out;
+}
+.logout-btn:hover {
+    background-color: #ff6347; /* Lighter shade of orangered */
+}
