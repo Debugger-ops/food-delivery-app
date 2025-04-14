@@ -1,0 +1,39 @@
+.checkout-page {
+    padding: 2rem;
+  }
+  
+  .checkout-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .order-summary, .address-summary {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 12px;
+    background: #fafafa;
+  }
+  
+  .price-summary p {
+    margin: 0.5rem 0;
+  }
+  
+  .checkout-button {
+    margin-top: 1rem;
+    padding: 10px 20px;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .checkout-button:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+  }
+  

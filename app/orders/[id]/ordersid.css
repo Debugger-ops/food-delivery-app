@@ -1,0 +1,44 @@
+.order-page {
+    max-width: 42rem; /* Similar to Tailwind's max-w-2xl */
+    margin: 2rem auto 0;
+  }
+  
+  .order-header {
+    text-align: center;
+  }
+  
+  .order-message {
+    margin: 1rem 0 2rem;
+  }
+  
+  .order-content {
+    display: grid;
+    gap: 4rem;
+  }
+  
+  @media (min-width: 768px) {
+    .order-content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .order-summary {
+    text-align: right;
+    padding: 0.5rem 0;
+    color: #6b7280; /* text-gray-500 */
+  }
+  
+  .summary-value {
+    color: #000;
+    font-weight: bold;
+    display: inline-block;
+    width: 2rem;
+    margin-left: 0.25rem;
+  }
+  
+  .address-box {
+    background-color: #f3f4f6; /* bg-gray-100 */
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  

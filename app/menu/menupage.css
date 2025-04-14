@@ -1,0 +1,25 @@
+.menu-page {
+    margin-top: 2rem;
+  }
+  
+  .category-section {
+    margin-bottom: 3rem;
+  }
+  
+  .section-header {
+    text-align: center;
+  }
+  
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .menu-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
