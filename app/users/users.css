@@ -1,0 +1,59 @@
+/* usersPage.css */
+
+.users-section {
+    max-width: 640px;
+    margin: 2rem auto;
+}
+
+.user-list {
+    margin-top: 2rem;
+}
+
+.user-card {
+    background-color: #f3f4f6;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    flex-grow: 1;
+}
+
+@media (min-width: 768px) {
+    .user-info {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.user-name {
+    color: #111827;
+}
+
+.no-name {
+    font-style: italic;
+}
+
+.user-email {
+    color: #6b7280;
+}
+
+.edit-button {
+    background-color: #111827;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.edit-button:hover {
+    background-color: #1f2937;
+}
