@@ -9,7 +9,8 @@
 
 .login-left {
     flex: 1;
-    background-color: #fcf2e8;
+    background-color: #f59e0b;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,6 +20,7 @@
 }
 
 .login-logo {
+    margin: 10px;
     position: absolute;
     top: 2rem;
     left: 2rem;
@@ -33,10 +35,15 @@
 }
 
 .login-logo p {
-    font-size: 1rem;
-    color: #333;
+    font-size: 2rem;
+    color: white;
     margin-top: 0.5rem;
 }
+.h2 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
 
 .food-image-container {
     width: 100%;
