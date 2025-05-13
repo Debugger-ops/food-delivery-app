@@ -116,7 +116,7 @@ export default function MenuItem(props) {
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.4 }}
                 >
-                  🛒 Add to cart ${price}
+                  🛒 Add to cart ₹{price}
                 </motion.button>
 
                 <button className="cancel-btn" onClick={() => setShowPopup(false)}>
