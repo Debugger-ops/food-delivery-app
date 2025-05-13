@@ -1,0 +1,224 @@
+.menu-item-form {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-section {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 16px;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.image-preview {
+  margin-top: 10px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  width: 100px;
+  height: 100px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dietary options */
+.dietary-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+/* Ingredients */
+.ingredients-section,
+.sizes-section {
+  margin-top: 20px;
+}
+
+.ingredient-row,
+.size-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ingredient-name {
+  flex: 3;
+}
+
+.ingredient-quantity {
+  flex: 1;
+}
+
+.ingredient-unit {
+  flex: 1;
+}
+
+.size-name {
+  flex: 2;
+}
+
+.size-price {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.price-prefix {
+  position: absolute;
+  left: 10px;
+  color: #666;
+  z-index: 1;
+}
+
+.size-price input {
+  padding-left: 30px !important;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #ff4d4f;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.remove-btn:hover {
+  background-color: rgba(255, 77, 79, 0.1);
+}
+
+.add-btn {
+  background: none;
+  border: 1px dashed #b6b6b6;
+  color: #666;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-top: 8px;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.add-btn:hover {
+  border-color: #4a90e2;
+  color: #4a90e2;
+  background-color: rgba(74, 144, 226, 0.05);
+}
+
+/* Form actions */
+.form-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-btn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #3b7bc4;
+}
+
+.submit-btn:disabled {
+  background-color: #a8c6e8;
+  cursor: not-allowed;
+}
