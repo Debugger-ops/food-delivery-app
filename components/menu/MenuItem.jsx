@@ -82,7 +82,7 @@ export default function MenuItem(props) {
                           checked={selectedSize?.name === size.name}
                           name="size"
                         />
-                        <p className="price-tag">Price: ${price}</p>
+                        <p className="price-tag">Price: ₹{price}</p>
 
 
                       </label>
