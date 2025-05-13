@@ -44,7 +44,9 @@
   font-size: 0.9rem;
   color: #333;
 }
-
+.price-tag{
+  color: orangered;
+}
 .extra-price {
   font-weight: bold;
 }
@@ -64,7 +66,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  color: #ff4d4d;
+  color: orangered;
   transition: color 0.3s ease;
 }
 
