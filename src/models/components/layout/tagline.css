@@ -1,0 +1,160 @@
+/* tagline.css */
+.tagline {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+}
+
+.carousel {
+    position: relative;
+        margin: 0 auto;
+}
+
+.carousel-content {
+    margin-bottom: 1rem;
+}
+
+.carousel-image-container {
+    margin-right: 10px;
+    position: relative;
+    width: 95vw;  /* Wider rectangle */
+    height: 530px; /* Reduced height */
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures proper fit without stretching */
+    transition: transform 0.5s ease;
+}
+
+.carousel-image:hover {
+    transform: scale(1.02);
+}
+
+.carousel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: white;
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.carousel-overlay h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-overlay p {
+    font-size: 1.2rem;
+ 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0 1rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+    background-color: #333;
+}
+
+.clbuttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.order-now-btn,
+.learn-more-btn {
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.order-now-btn {
+  background-color: #ff4500;
+  color: white;
+}
+
+.learn-more-btn {
+  background-color: #ffffff;
+  color: #ff4500;
+  border: 2px solid #ff4500;
+}
+
+.order-now-btn:hover {
+  background-color: #d93800;
+}
+
+.learn-more-btn:hover {
+  background-color: #ff4500;
+  color: white;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .carousel {
+        max-width: 100%;
+    }
+    
+    .carousel-image-container {
+        width: 100%;
+        height: 250px; /* Adjust height for smaller screens */
+    }
+
+    .carousel-overlay h1 {
+        font-size: 1.4rem;
+    }
+    
+    .carousel-overlay p {
+        font-size: 0.9rem;
+        max-width: 95%;
+    }
+}
