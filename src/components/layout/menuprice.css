@@ -1,0 +1,81 @@
+/* menuItemPriceProps.css */
+
+.price-prop-container {
+    background-color: #e5e7eb;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+  }
+  
+  .toggle-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+  }
+  
+  .prop-list {
+    display: none;
+    margin-top: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .prop-list.open {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .prop-item {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+  
+  .prop-field {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .prop-field label {
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+  }
+  
+  .prop-field input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+  }
+  
+  .delete-button {
+    background-color: white;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+  }
+  
+  .add-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .plus-icon {
+    width: 1rem;
+    height: 1rem;
+  }
+  

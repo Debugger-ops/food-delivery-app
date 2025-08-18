@@ -1,0 +1,19 @@
+/* SectionHeaders.module.css */
+.subHeader {
+    text-transform: uppercase;
+    color: orangered;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 1rem;
+  }
+  
+  .mainHeader {
+    text-align:center; ;
+    
+    margin-left: 100px; ;
+    color: orangered;
+    font-weight: bold;
+    font-size: 3.25rem; /* Equivalent to text-4xl */
+    
+  }
+  
