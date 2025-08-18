@@ -202,7 +202,7 @@ export default function CheckoutPage() {
       case 'cashOnDelivery':
         return (
           <div className="cash-payment-info">
-            <p>You will pay ${total.toFixed(2)} in cash upon delivery.</p>
+            <p>You will pay ₹{total.toFixed(2)} in cash upon delivery.</p>
             <p>Please have the exact amount ready for our delivery person.</p>
           </div>
         );
