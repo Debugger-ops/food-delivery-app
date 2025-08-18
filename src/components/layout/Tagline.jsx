@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "./tagline.css";
-
+import Link from "next/link";
 export default function Tagline() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -53,8 +53,8 @@ export default function Tagline() {
       <div className="carousel">
         <div className="carousel-content">
           <div className="carousel-image-container">
-            <img 
-              src={carouselItems[currentSlide].imageUrl} 
+            <img
+              src={carouselItems[currentSlide].imageUrl}
               alt={carouselItems[currentSlide].imageAlt}
               className="carousel-image"
             />
@@ -62,7 +62,10 @@ export default function Tagline() {
               <h1>{carouselItems[currentSlide].heading}</h1>
               <p>{carouselItems[currentSlide].text}</p>
               <div className="clbuttons">
-                <button className="order-now-btn">Order Now</button>
+                <Link href="/menu">
+                  <button className="order-now-btn">Order Now</button>
+                </Link>
+
                 <button className="learn-more-btn">Learn More</button>
               </div>
             </div>
@@ -75,8 +78,8 @@ export default function Tagline() {
           </button>
           <div className="carousel-indicators">
             {carouselItems.map((_, index) => (
-              <span 
-                key={index} 
+              <span
+                key={index}
                 className={`indicator ${index === currentSlide ? 'active' : ''}`}
                 onClick={() => setCurrentSlide(index)}
               />
