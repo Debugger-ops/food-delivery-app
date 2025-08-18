@@ -1,0 +1,288 @@
+/* register.css */
+.register-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+  }
+  
+  .register-left {
+    flex: 1;
+    background-color: #f59e0b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .register-logo {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .register-logo h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .register-logo p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    max-width: 300px;
+  }
+  
+  .food-image-container {
+    position: relative;
+    height: 100%;
+    margin-top: 20px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .food-image {
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .register-right {
+    flex: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+  
+  .register-form-container {
+    width: 100%;
+    max-width: 550px;
+    padding: 20px;
+  }
+  
+  .register-form-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .register-subtitle {
+    color: #777;
+    margin-bottom: 30px;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .form-row .form-group {
+    flex: 1;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+    outline: none;
+  }
+  
+  .form-group input:disabled,
+  .form-group textarea:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  
+  .checkbox-group {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .checkbox-group input {
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .checkbox-group label {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .checkbox-group a {
+    color: #f59e0b;
+    text-decoration: none;
+  }
+  
+  .checkbox-group a:hover {
+    text-decoration: underline;
+  }
+  
+  .error-message {
+    color: #e53e3e;
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }
+  
+  .register-button {
+    background-color: #f59e0b;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+  }
+  
+  .register-button:hover:not(:disabled) {
+    background-color: #e07800;
+  }
+  
+  .register-button:disabled {
+    background-color: #ffc278;
+    cursor: not-allowed;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .login-link a {
+    color: #f59e0b;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Success and error message styles */
+  .success-message {
+    background-color: #dcf5e2;
+    border-left: 4px solid #38a169;
+    color: #276749;
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+  }
+  
+  .success-message p {
+    margin: 5px 0;
+  }
+  
+  .success-message a {
+    color: #2b6cb0;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .success-message a:hover {
+    text-decoration: underline;
+  }
+  
+  .error-banner {
+    background-color: #fed7d7;
+    border-left: 4px solid #e53e3e;
+    color: #c53030;
+    padding: 16px 20px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+  }
+  
+  .error-banner p {
+    margin: 5px 0;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 1024px) {
+    .register-left {
+      flex: 0.8;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .register-container {
+      flex-direction: column;
+    }
+    
+    .register-left {
+      padding: 30px;
+      min-height: 250px;
+    }
+    
+    .food-image-container {
+      display: none;
+    }
+    
+    .register-right {
+      padding: 30px 20px;
+    }
+    
+    .form-row {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .register-form-container h2 {
+      font-size: 1.8rem;
+    }
+    
+    .register-subtitle {
+      font-size: 0.9rem;
+    }
+    
+    .register-left {
+      padding: 20px;
+      min-height: 180px;
+    }
+  }
