@@ -1,9 +1,0 @@
-/* successbox.css */
-.success-box {
-    text-align: center;
-    background-color: #d1fae5; /* green-100 */
-    padding: 1rem;             /* p-4 */
-    border-radius: 0.5rem;     /* rounded-lg */
-    border: 1px solid #6ee7b7; /* border-green-300 */
-  }
-  

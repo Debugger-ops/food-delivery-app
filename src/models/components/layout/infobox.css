@@ -1,9 +1,0 @@
-/* infobox.css */
-.info-box {
-    text-align: center;
-    background-color: #dbeafe; /* blue-100 */
-    padding: 1rem;             /* p-4 */
-    border-radius: 0.5rem;     /* rounded-lg */
-    border: 1px solid #93c5fd; /* border-blue-300 */
-  }
-  
