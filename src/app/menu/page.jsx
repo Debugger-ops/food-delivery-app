@@ -79,15 +79,7 @@ export default function MenuPage() {
 
   return (
     <div className="menu-page-container">
-      {/* Mobile Menu Toggle Button */}
-      <button 
-        className="mobile-menu-toggle"
-        onClick={toggleMobileMenu}
-        aria-label="Toggle menu"
-      >
-        {isMobileMenuOpen ? '✕' : '☰'}
-      </button>
-
+      
       {/* Mobile Overlay */}
       <div 
         className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`}
