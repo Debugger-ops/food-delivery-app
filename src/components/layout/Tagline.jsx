@@ -73,9 +73,7 @@ export default function Tagline() {
         </div>
 
         <div className="carousel-controls">
-          <button className="carousel-btn prev" onClick={prevSlide}>
-            &lt;
-          </button>
+         
           <div className="carousel-indicators">
             {carouselItems.map((_, index) => (
               <span
@@ -85,9 +83,7 @@ export default function Tagline() {
               />
             ))}
           </div>
-          <button className="carousel-btn next" onClick={nextSlide}>
-            &gt;
-          </button>
+          
         </div>
       </div>
     </section>
