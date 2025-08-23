@@ -9,6 +9,7 @@ export default function MenuPage() {
   const [menuItems, setMenuItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,14 +37,38 @@ export default function MenuPage() {
     fetchData();
   }, []);
 
+  // Close mobile menu when window is resized to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Handle category selection
   const handleCategoryClick = (categoryId) => {
     setSelectedCategory(categoryId);
+    setIsMobileMenuOpen(false); // Close mobile menu when category is selected
   };
 
   // Show all categories overview
   const showAllCategories = () => {
     setSelectedCategory(null);
+    setIsMobileMenuOpen(false); // Close mobile menu
+  };
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Close mobile menu when overlay is clicked
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   // Get current category details
@@ -54,8 +79,23 @@ export default function MenuPage() {
 
   return (
     <div className="menu-page-container">
+      {/* Mobile Menu Toggle Button */}
+      <button 
+        className="mobile-menu-toggle"
+        onClick={toggleMobileMenu}
+        aria-label="Toggle menu"
+      >
+        {isMobileMenuOpen ? '✕' : '☰'}
+      </button>
+
+      {/* Mobile Overlay */}
+      <div 
+        className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`}
+        onClick={closeMobileMenu}
+      />
+
       {/* Categories Sidebar */}
-      <aside className="categories-sidebar">
+      <aside className={`categories-sidebar ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
         <h3 className="sidebar-title">Categories</h3>
         
         {/* Show All Button */}
