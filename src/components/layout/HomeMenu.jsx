@@ -194,60 +194,7 @@ export default function HomeMenu() {
   const itemWidthPercent = 100 / itemsPerView;
 
   return (
-    <section className="home-menu">
-      <div className="decorative-images">
-        <img className="decorative-left" src="https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?w=826" width={200} alt="" aria-hidden="true" />
-        <img className="decorative-right" src="https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?w=826" width={200} alt="" aria-hidden="true" />
+    <div className="home-menu-container">
       </div>
-
-      <div className="menu-header">
-        <SectionHeaders
-          subHeader="Check out"
-          mainHeader="Our Best Selling Menu"
-        />
-      </div>
-
-      <div className="carousel-container" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <button className="carousel-btn carousel-btn-prev" onClick={prevSlide} aria-label="Previous slide">
-          &#8249;
-        </button>
-
-        <div className="carousel-wrapper" ref={carouselRef}>
-          <div
-            className="carousel-track"
-            style={{
-              transform: `translateX(-${currentIndex * itemWidthPercent}%)`,
-            }}
-          >
-            {bestSellers.map(item => (
-              <div
-                key={item._id}
-                className="carousel-item"
-                style={{ width: `${itemWidthPercent}%` }}
-              >
-                <MenuItem {...item} />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <button className="carousel-btn carousel-btn-next" onClick={nextSlide} aria-label="Next slide">
-          &#8250;
-        </button>
-      </div>
-
-      <div className="carousel-indicators" role="tablist" aria-label="Carousel navigation">
-        {bestSellers.length > itemsPerView && Array.from({ length: maxIndex + 1 }, (_, index) => (
-          <button
-            key={index}
-            className={`indicator ${currentIndex === index ? 'active' : ''}`}
-            onClick={() => goToSlide(index)}
-            role="tab"
-            aria-selected={currentIndex === index}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
-    </section>
   );
 }
