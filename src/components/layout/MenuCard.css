@@ -1,0 +1,84 @@
+/* ─── Card Container ────────────────────────────────────── */
+.menu-card {
+  background-color: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Image Wrapper ─────────────────────────────────────── */
+.menu-card__image-wrapper {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.menu-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.menu-card__image:hover {
+  transform: scale(1.1);
+}
+
+/* ─── Body ──────────────────────────────────────────────── */
+.menu-card__body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ─── Name + Price Row ──────────────────────────────────── */
+.menu-card__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.menu-card__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: var(--card-foreground);
+  margin: 0;
+
+  /* line-clamp-1 equivalent */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.menu-card__price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Description ───────────────────────────────────────── */
+.menu-card__description {
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+  flex: 1;
+
+  /* line-clamp-2 equivalent */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

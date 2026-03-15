@@ -7,11 +7,7 @@
 }
 
 /* User tabs styling */
-<<<<<<< HEAD
 .profile-page .tabs {
-=======
-.profile-page{
->>>>>>> fe2d1e90 (Save all local changes before pulling)
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
