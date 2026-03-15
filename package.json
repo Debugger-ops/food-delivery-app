@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",
-    "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
     "framer-motion": "^12.6.3",
     "lucide-react": "^0.507.0",
@@ -19,14 +18,14 @@
     "next": "^16.1.6",
     "next-auth": "^4.24.11",
     "razorpay": "^2.9.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hot-toast": "^2.5.2",
     "stripe": "^18.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "eslint": "^9",
-    "eslint-config-next": "15.2.4"
+    "eslint-config-next": "^16.1.6"
   }
 }
