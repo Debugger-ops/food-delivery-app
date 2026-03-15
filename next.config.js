@@ -9,6 +9,15 @@ const nextConfig = {
       },
     ],
   },
+
+  // Ensure Turbopack uses the correct workspace root
+  experimental: {
+    turbo: true,
+    turbopack: true,
+    turboRoot: __dirname, // <--- ensures Turbopack resolves next/package.json from project root
+  },
+
+  reactStrictMode: true, // optional but recommended
 };
 
 module.exports = nextConfig;
