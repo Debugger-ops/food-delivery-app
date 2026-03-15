@@ -1,7 +1,7 @@
-'use client';
-import { useState, useEffect, useRef } from "react";
-import MenuItem from "../menu/MenuItem";
-import SectionHeaders from "./SectionHeaders";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import MenuCard from "./MenuCard";
 import "./menuhome.css";
 
 const MENU_ITEMS = [
@@ -62,60 +62,70 @@ const HomeMenu = () => {
   const itemWidth = 100 / itemsPerView;
 
   return (
-    <section className="home-menu">
-      <div className="decorative-images">
-        <img className="decorative-left" src="https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?w=826" width={200} alt="" aria-hidden="true" />
-        <img className="decorative-right" src="https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?w=826" width={200} alt="" aria-hidden="true" />
+    <section
+      className="home-menu-section"
+      onMouseEnter={() => setIsAutoPlaying(false)}
+      onMouseLeave={() => setIsAutoPlaying(true)}
+    >
+      {/* Header */}
+      <div className="home-menu-header">
+        <span className="home-menu-label">Our Menu</span>
+        <h1 className="home-menu-title">Best Sellers</h1>
+        <p className="home-menu-subtitle">Handpicked favorites loved by our guests</p>
       </div>
 
-      <div className="menu-header">
-        <SectionHeaders
-          subHeader="Check out"
-          mainHeader="Our Best Selling Menu"
-        />
-      </div>
-
-      <div className="carousel-container" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <button className="carousel-btn carousel-btn-prev" onClick={prevSlide} aria-label="Previous slide">
-          &#8249;
+      {/* Carousel */}
+      <div className="home-menu-carousel-wrapper">
+        {/* Prev Button */}
+        <button
+          onClick={prev}
+          className="carousel-btn carousel-btn--prev"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft size={20} />
         </button>
 
-        <div className="carousel-wrapper" ref={carouselRef}>
-          <div
+        {/* Track */}
+        <div className="carousel-track-outer">
+          <motion.div
             className="carousel-track"
-            style={{
-              transform: `translateX(-${currentIndex * itemWidthPercent}%)`,
-            }}
+            animate={{ x: `-${currentIndex * itemWidth}%` }}
+            transition={{ type: "spring", stiffness: 200, damping: 25, mass: 0.8 }}
           >
-            {bestSellers.map(item => (
+            {MENU_ITEMS.map((item) => (
               <div
-                key={item._id}
+                key={item.id}
                 className="carousel-item"
-                style={{ width: `${itemWidthPercent}%` }}
+                style={{ width: `${itemWidth}%` }}
               >
-                <MenuItem {...item} />
+                <MenuCard {...item} />
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
-        <button className="carousel-btn carousel-btn-next" onClick={nextSlide} aria-label="Next slide">
-          &#8250;
+        {/* Next Button */}
+        <button
+          onClick={next}
+          className="carousel-btn carousel-btn--next"
+          aria-label="Next slide"
+        >
+          <ChevronRight size={20} />
         </button>
       </div>
 
-      <div className="carousel-indicators" role="tablist" aria-label="Carousel navigation">
-        {bestSellers.length > itemsPerView && Array.from({ length: maxIndex + 1 }, (_, index) => (
+      {/* Dots */}
+      <div className="carousel-dots">
+        {Array.from({ length: maxIndex + 1 }, (_, i) => (
           <button
-            key={index}
-            className={`indicator ${currentIndex === index ? 'active' : ''}`}
-            onClick={() => goToSlide(index)}
-            role="tab"
-            aria-selected={currentIndex === index}
-            aria-label={`Go to slide ${index + 1}`}
+            key={i}
+            onClick={() => setCurrentIndex(i)}
+            className={`carousel-dot ${currentIndex === i ? "carousel-dot--active" : ""}`}
+            aria-label={`Go to slide ${i + 1}`}
           />
         ))}
       </div>
+    </section>
   );
 };
 
