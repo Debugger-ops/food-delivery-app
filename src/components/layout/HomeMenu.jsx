@@ -11,20 +11,19 @@ export default function HomeMenu() {
   const carouselRef = useRef(null);
   const autoPlayRef = useRef(null);
 
-  // Items per view based on screen size
+  // Items per view based on screen size — now actually returns different values
   const getItemsPerView = () => {
     if (typeof window !== 'undefined') {
       if (window.innerWidth >= 1200) return 4;
-      if (window.innerWidth >= 900) return 4;
-      if (window.innerWidth >= 600) return 4;
-      return 4;
+      if (window.innerWidth >= 900) return 3;
+      if (window.innerWidth >= 600) return 2;
+      return 1;
     }
-    return 5;
+    return 4;
   };
 
   const [itemsPerView, setItemsPerView] = useState(getItemsPerView());
 
-  // Hardcoded items
   useEffect(() => {
     const hardcodedItems = [
       {
@@ -110,44 +109,51 @@ export default function HomeMenu() {
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnFuB33vfZ-OPmKGIe5H-XJ5x0pgSnk5jqGw&s",
         price: 50,
         description: "Refreshing yogurt-based mango drink"
-      }, {
+      },
+      {
         _id: "13",
         name: "Litti Choka",
         image: "https://www.secondrecipe.com/wp-content/uploads/2019/11/litti-chokha-1.jpg",
         price: 210,
-        description: "Refreshing yogurt-based mango drink"
+        description: "Traditional Bihar dish with roasted wheat balls"
       },
       {
         _id: "14",
         name: "Masala Dosa",
         image: "https://palatesdesire.com/wp-content/uploads/2022/09/Mysore-masala-dosa-recipe@palates-desire-500x500.jpg",
         price: 350,
-        description: "Refreshing yogurt-based mango drink"
-      },{
+        description: "Crispy rice crepe with spiced potato filling"
+      },
+      {
         _id: "15",
         name: "RasMalai",
         image: "https://palatesdesire.com/wp-content/uploads/2022/09/Rasmalai-recipe@palates-desire.jpg",
         price: 3.50,
-        description: "Refreshing yogurt-based mango drink"
+        description: "Soft cottage cheese dumplings in sweet cream"
       }
     ];
 
     setBestSellers(hardcodedItems);
   }, []);
 
-  // Handle window resize
+  // Handle window resize — resets index if it's now out of bounds
   useEffect(() => {
     const handleResize = () => {
-      setItemsPerView(getItemsPerView());
+      const next = getItemsPerView();
+      setItemsPerView(next);
+      setCurrentIndex(prev => {
+        const maxIndex = Math.max(0, bestSellers.length - next);
+        return prev > maxIndex ? maxIndex : prev;
+      });
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [bestSellers.length]);
 
-  // Auto-play functionality
+  // Auto-play — fixed condition: was `bestSellers.length < 0` (never true)
   useEffect(() => {
-    if (isAutoPlaying && bestSellers.length < 0) {
+    if (isAutoPlaying && bestSellers.length > 0) {
       autoPlayRef.current = setInterval(() => {
         setCurrentIndex(prev => {
           const maxIndex = Math.max(0, bestSellers.length - itemsPerView);
@@ -181,21 +187,17 @@ export default function HomeMenu() {
     setCurrentIndex(index);
   };
 
-  const handleMouseEnter = () => {
-    setIsAutoPlaying(false);
-  };
-
-  const handleMouseLeave = () => {
-    setIsAutoPlaying(true);
-  };
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
 
   const maxIndex = Math.max(0, bestSellers.length - itemsPerView);
+  const itemWidthPercent = 100 / itemsPerView;
 
   return (
     <section className="home-menu">
       <div className="decorative-images">
-        <img className="decorative-left" src="https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?w=826" width={200} alt="Decorative" />
-        <img className="decorative-right" src="https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?w=826" width={200} alt="Decorative" />
+        <img className="decorative-left" src="https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?w=826" width={200} alt="" aria-hidden="true" />
+        <img className="decorative-right" src="https://img.freepik.com/premium-vector/logo-food-company-that-says-sun-sun-sunflower_917213-253424.jpg?w=826" width={200} alt="" aria-hidden="true" />
       </div>
 
       <div className="menu-header">
@@ -214,21 +216,19 @@ export default function HomeMenu() {
           <div
             className="carousel-track"
             style={{
-              transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
-              width: `100%`
+              transform: `translateX(-${currentIndex * itemWidthPercent}%)`,
             }}
           >
             {bestSellers.map(item => (
               <div
                 key={item._id}
                 className="carousel-item"
-                style={{ width: `${100 / itemsPerView}%` }}
+                style={{ width: `${itemWidthPercent}%` }}
               >
                 <MenuItem {...item} />
               </div>
             ))}
           </div>
-
         </div>
 
         <button className="carousel-btn carousel-btn-next" onClick={nextSlide} aria-label="Next slide">
@@ -236,12 +236,14 @@ export default function HomeMenu() {
         </button>
       </div>
 
-      <div className="carousel-indicators">
+      <div className="carousel-indicators" role="tablist" aria-label="Carousel navigation">
         {bestSellers.length > itemsPerView && Array.from({ length: maxIndex + 1 }, (_, index) => (
           <button
             key={index}
             className={`indicator ${currentIndex === index ? 'active' : ''}`}
             onClick={() => goToSlide(index)}
+            role="tab"
+            aria-selected={currentIndex === index}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}
