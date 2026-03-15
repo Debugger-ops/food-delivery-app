@@ -10,13 +10,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@paypal/checkout-server-sdk": "^1.0.3",
+    "@paypal/paypal-server-sdk": "^1.0.0",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.2",
     "framer-motion": "^12.6.3",
     "lucide-react": "^0.507.0",
     "mongoose": "^8.13.2",
-    "next": "^16.1.6",
+    "next": "^16.6.3",
     "next-auth": "^4.24.11",
     "razorpay": "^2.9.6",
     "react": "^19.0.0",
@@ -27,10 +27,10 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "eslint": "^9",
-    "eslint-config-next": "^16.1.6"
+    "eslint-config-next": "^16.6.3"
   },
   "resolutions": {
-    "next": "^16.1.6",
-    "eslint-config-next": "^16.1.6"
+    "next": "^16.6.3",
+    "eslint-config-next": "^16.6.3"
   }
 }
