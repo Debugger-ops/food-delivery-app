@@ -1,4 +1,4 @@
-/* Enhanced page.css */
+/* Enhanced page.css — Fully Responsive */
 
 /* CSS Variables for theming */
 :root {
@@ -19,101 +19,89 @@
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
   --gradient-secondary: linear-gradient(135deg, var(--accent-color) 0%, #26a69a 100%);
+
+  /* Fluid spacing scale */
+  --section-padding: clamp(50px, 8vw, 100px);
+  --container-padding: clamp(15px, 4vw, 40px);
 }
 
-/* Global Styles */
-* {
+/* ─── Reset & Base ─────────────────────────────────────────── */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   color: var(--text-primary);
-  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ─── Container ─────────────────────────────────────────────── */
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 var(--container-padding);
 }
 
-/* Animation Utilities */
+/* ─── Animations ─────────────────────────────────────────────── */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.05); }
 }
 
 @keyframes bounce {
-  0%, 20%, 53%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40%, 43% {
-    transform: translateY(-10px);
-  }
-  70% {
-    transform: translateY(-5px);
-  }
+  0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+  40%, 43%                 { transform: translateY(-10px); }
+  70%                      { transform: translateY(-5px); }
+}
+
+@keyframes loading {
+  0%   { left: -100%; }
+  100% { left: 100%; }
 }
 
 .animate-in {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Stats Section */
+/* ─── Stats Section ─────────────────────────────────────────── */
 .stats-section {
-  padding: 80px 0;
+  padding: var(--section-padding) 0;
   background: var(--gradient-primary);
   position: relative;
   overflow: hidden;
@@ -122,18 +110,16 @@ body {
 .stats-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="25" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
   opacity: 0.3;
+  pointer-events: none;
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(15px, 3vw, 30px);
   position: relative;
   z-index: 1;
 }
@@ -143,7 +129,7 @@ body {
   align-items: center;
   gap: 20px;
   background: rgba(255, 255, 255, 0.1);
-  padding: 30px;
+  padding: clamp(18px, 3vw, 30px);
   border-radius: var(--border-radius);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -170,16 +156,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 60px;
+  flex-shrink: 0;
+  width: 60px;
   height: 60px;
 }
 
-.stat-content {
-  color: white;
-}
+.stat-content { color: white; }
 
 .stat-number {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 800;
   line-height: 1;
   margin-bottom: 5px;
@@ -187,27 +172,27 @@ body {
 }
 
 .stat-label {
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
   opacity: 0.9;
   font-weight: 500;
 }
 
-/* Features Section */
+/* ─── Features Section ───────────────────────────────────────── */
 .features-section {
-  padding: 100px 0;
+  padding: var(--section-padding) 0;
   background: var(--background-light);
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  margin-top: 60px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 4vw, 40px);
+  margin-top: clamp(30px, 5vw, 60px);
 }
 
 .feature-card {
   background: var(--background-white);
-  padding: 40px 30px;
+  padding: clamp(25px, 4vw, 40px) clamp(20px, 3vw, 30px);
   border-radius: var(--border-radius);
   text-align: center;
   box-shadow: var(--shadow-light);
@@ -234,9 +219,7 @@ body {
   transition: var(--transition);
 }
 
-.feature-card:hover::before {
-  transform: scaleX(1);
-}
+.feature-card:hover::before { transform: scaleX(1); }
 
 .feature-card:hover {
   transform: translateY(-10px);
@@ -246,8 +229,8 @@ body {
 .feature-icon {
   background: var(--gradient-primary);
   color: white;
-  width: 80px;
-  height: 80px;
+  width: clamp(60px, 8vw, 80px);
+  height: clamp(60px, 8vw, 80px);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -256,12 +239,10 @@ body {
   transition: var(--transition);
 }
 
-.feature-card:hover .feature-icon {
-  animation: pulse 2s infinite;
-}
+.feature-card:hover .feature-icon { animation: pulse 2s infinite; }
 
 .feature-card h3 {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-weight: 700;
   margin-bottom: 15px;
   color: var(--text-primary);
@@ -270,19 +251,20 @@ body {
 .feature-card p {
   color: var(--text-secondary);
   line-height: 1.7;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
-/* Enhanced About Section */
+/* ─── About Section ─────────────────────────────────────────── */
 .home-selection {
-  padding: 100px 0;
+  padding: var(--section-padding) 0;
   background: var(--background-white);
 }
 
 .about-content {
-  margin-top: 60px;
+  margin-top: clamp(30px, 5vw, 60px);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: clamp(30px, 6vw, 60px);
   align-items: center;
 }
 
@@ -296,7 +278,7 @@ body {
 }
 
 .home-selection-text {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 25px;
@@ -315,6 +297,7 @@ body {
   gap: 12px;
   font-weight: 500;
   color: var(--text-primary);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 .highlight-icon {
@@ -334,37 +317,38 @@ body {
 .image-placeholder {
   background: var(--gradient-secondary);
   border-radius: var(--border-radius);
-  padding: 60px 40px;
+  padding: clamp(40px, 6vw, 60px) clamp(25px, 4vw, 40px);
   text-align: center;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
   font-weight: 600;
-  min-height: 300px;
+  min-height: clamp(200px, 30vw, 300px);
   justify-content: center;
 }
 
-/* Testimonials Section */
+/* ─── Testimonials Section ──────────────────────────────────── */
 .testimonials-section {
-  padding: 100px 0;
+  padding: var(--section-padding) 0;
   background: var(--background-light);
   position: relative;
 }
 
 .testimonials-carousel {
-  margin-top: 60px;
+  margin-top: clamp(30px, 5vw, 60px);
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  padding: 0 var(--container-padding);
 }
 
 .testimonial-card {
   background: var(--background-white);
-  padding: 50px 40px;
+  padding: clamp(25px, 5vw, 50px) clamp(20px, 4vw, 40px);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-medium);
   opacity: 0;
@@ -388,7 +372,7 @@ body {
 }
 
 .testimonial-content p {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   font-style: italic;
   color: var(--text-secondary);
   line-height: 1.7;
@@ -400,6 +384,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .author-avatar {
@@ -413,6 +398,7 @@ body {
   color: white;
   font-weight: 700;
   font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 .testimonial-dots {
@@ -437,34 +423,32 @@ body {
   transform: scale(1.2);
 }
 
-.dot:hover {
-  background: var(--primary-dark);
-}
+.dot:hover { background: var(--primary-dark); }
 
-/* Enhanced Contact Section */
+/* ─── Contact Section ───────────────────────────────────────── */
 .contact-section {
-  padding: 100px 0;
+  padding: var(--section-padding) 0;
   background: var(--background-white);
 }
 
 .contact-content {
-  margin-top: 60px;
+  margin-top: clamp(30px, 5vw, 60px);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: clamp(30px, 6vw, 60px);
 }
 
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: clamp(20px, 3vw, 40px);
 }
 
 .contact-item {
   display: flex;
   align-items: flex-start;
   gap: 20px;
-  padding: 25px;
+  padding: clamp(18px, 2.5vw, 25px);
   background: var(--background-light);
   border-radius: var(--border-radius);
   transition: var(--transition);
@@ -483,12 +467,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 50px;
+  flex-shrink: 0;
+  width: 50px;
   height: 50px;
 }
 
 .contact-item h3 {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 700;
   margin-bottom: 8px;
   color: var(--text-primary);
@@ -497,35 +482,34 @@ body {
 .contact-item p {
   color: var(--text-secondary);
   margin: 0;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
 }
 
-/* Contact Form */
+/* ─── Contact Form ──────────────────────────────────────────── */
 .contact-form-wrapper {
   background: var(--background-light);
-  padding: 40px;
+  padding: clamp(25px, 4vw, 40px);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-light);
 }
 
 .contact-form h3 {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: 700;
   margin-bottom: 30px;
   color: var(--text-primary);
   text-align: center;
 }
 
-.form-group {
-  margin-bottom: 25px;
-}
+.form-group { margin-bottom: 25px; }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 15px 20px;
+  padding: clamp(12px, 1.8vw, 15px) clamp(14px, 2vw, 20px);
   border: 2px solid var(--border-light);
   border-radius: var(--border-radius);
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
   font-family: inherit;
   transition: var(--transition);
   background: var(--background-white);
@@ -545,12 +529,12 @@ body {
 
 .submit-btn {
   width: 100%;
-  padding: 15px 25px;
+  padding: clamp(12px, 2vw, 15px) 25px;
   background: var(--gradient-primary);
   color: white;
   border: none;
   border-radius: var(--border-radius);
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
@@ -571,13 +555,8 @@ body {
   transform: none;
 }
 
-.submit-btn.sending {
-  background: var(--text-light);
-}
-
-.submit-btn.success {
-  background: var(--accent-color);
-}
+.submit-btn.sending  { background: var(--text-light); }
+.submit-btn.success  { background: var(--accent-color); }
 
 .success-message {
   margin-top: 15px;
@@ -589,9 +568,9 @@ body {
   font-weight: 500;
 }
 
-/* Newsletter Section */
+/* ─── Newsletter Section ────────────────────────────────────── */
 .newsletter-section {
-  padding: 80px 0;
+  padding: clamp(50px, 8vw, 80px) 0;
   background: var(--gradient-primary);
   text-align: center;
 }
@@ -600,17 +579,18 @@ body {
   max-width: 600px;
   margin: 0 auto;
   color: white;
+  padding: 0 var(--container-padding);
 }
 
 .newsletter-content h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   font-weight: 800;
   margin-bottom: 15px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .newsletter-content p {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   margin-bottom: 40px;
   opacity: 0.9;
 }
@@ -618,21 +598,22 @@ body {
 .newsletter-form {
   display: flex;
   gap: 15px;
-  max-width: 400px;
+  max-width: 450px;
   margin: 0 auto;
 }
 
 .newsletter-form input {
   flex: 1;
-  padding: 15px 20px;
+  min-width: 0; /* prevents overflow in flex */
+  padding: clamp(12px, 2vw, 15px) 20px;
   border: none;
   border-radius: var(--border-radius);
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
   background: rgba(255, 255, 255, 0.9);
 }
 
 .newsletter-form button {
-  padding: 15px 30px;
+  padding: clamp(12px, 2vw, 15px) clamp(18px, 3vw, 30px);
   background: var(--text-primary);
   color: white;
   border: none;
@@ -641,6 +622,7 @@ body {
   cursor: pointer;
   transition: var(--transition);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .newsletter-form button:hover {
@@ -648,22 +630,22 @@ body {
   transform: translateY(-2px);
 }
 
-/* Enhanced Footer */
+/* ─── Footer ─────────────────────────────────────────────────── */
 .site-footer {
   background: var(--text-primary);
   color: white;
-  padding: 60px 0 20px;
+  padding: clamp(40px, 6vw, 60px) 0 20px;
 }
 
 .footer-content {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.5fr;
-  gap: 40px;
+  gap: clamp(25px, 4vw, 40px);
   margin-bottom: 40px;
 }
 
 .footer-logo h2 {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 800;
   margin-bottom: 10px;
   background: var(--gradient-primary);
@@ -681,6 +663,7 @@ body {
 .footer-social {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
 .footer-social a {
@@ -703,7 +686,7 @@ body {
 
 .footer-links h3,
 .footer-contact h3 {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 700;
   margin-bottom: 20px;
   color: white;
@@ -720,7 +703,7 @@ body {
   color: var(--text-light);
   text-decoration: none;
   transition: var(--transition);
-  position: relative;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
 }
 
 .footer-links a:hover {
@@ -734,6 +717,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
 }
 
 .footer-bottom {
@@ -743,37 +727,37 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
 }
 
 .footer-bottom p {
   color: var(--text-light);
   margin: 0;
+  font-size: clamp(0.8rem, 1.3vw, 0.95rem);
 }
 
 .footer-bottom-links {
   display: flex;
-  gap: 20px;
+  gap: clamp(12px, 2vw, 20px);
+  flex-wrap: wrap;
 }
 
 .footer-bottom-links a {
   color: var(--text-light);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.3vw, 0.9rem);
   transition: var(--transition);
 }
 
-.footer-bottom-links a:hover {
-  color: var(--primary-color);
-}
+.footer-bottom-links a:hover { color: var(--primary-color); }
 
-/* Scroll to Top Button */
+/* ─── Scroll to Top ──────────────────────────────────────────── */
 .scroll-to-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
+  bottom: clamp(16px, 3vw, 30px);
+  right: clamp(16px, 3vw, 30px);
+  width: clamp(42px, 5vw, 50px);
+  height: clamp(42px, 5vw, 50px);
   background: var(--gradient-primary);
   color: white;
   border: none;
@@ -794,145 +778,204 @@ body {
   animation: none;
 }
 
-/* Responsive Design */
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════════════════════════════════════ */
+
+/* ─── Large Tablets / Small Desktops (≤ 1024px) ─────────────── */
 @media (max-width: 1024px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .footer-content {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
-}
 
-@media (max-width: 768px) {
-  .container {
-    padding: 0 15px;
-  }
-  
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .stat-card {
-    padding: 25px;
-  }
-  
-  .stat-number {
-    font-size: 2rem;
-  }
-  
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .about-content,
-  .contact-content {
-    grid-template-columns: 1fr;
+  .about-content {
     gap: 40px;
   }
-  
-  .contact-form-wrapper {
-    padding: 30px 20px;
+
+  .contact-content {
+    gap: 40px;
   }
-  
-  .newsletter-form {
-    flex-direction: column;
+}
+
+/* ─── Tablets (≤ 768px) ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Stats */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
-  
-  .footer-content {
+
+  /* Features */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* About */
+  .about-content {
     grid-template-columns: 1fr;
     gap: 30px;
-    text-align: center;
   }
-  
-  .footer-social {
-    justify-content: center;
+
+  .about-text {
+    opacity: 1;
+    transform: none;
   }
-  
+
+  .about-image {
+    opacity: 1;
+    transform: none;
+  }
+
+  .about-content.animate-in .about-text,
+  .about-content.animate-in .about-image {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  /* Testimonials */
+  .testimonials-carousel {
+    padding: 0;
+  }
+
+  /* Contact */
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .contact-item:hover {
+    transform: none;
+  }
+
+  /* Newsletter */
+  .newsletter-form {
+    flex-direction: column;
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+
   .footer-bottom {
     flex-direction: column;
     text-align: center;
   }
-  
-  .scroll-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
+
+  .footer-bottom-links {
+    justify-content: center;
   }
 }
 
-@media (max-width: 480px) {
-  .stats-section,
-  .features-section,
-  .home-selection,
-  .testimonials-section,
-  .contact-section {
-    padding: 60px 0;
+/* ─── Mobile (≤ 600px) ───────────────────────────────────────── */
+@media (max-width: 600px) {
+  /* Stats: single column */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
-  
-  .newsletter-section {
-    padding: 60px 0;
-  }
-  
-  .newsletter-content h2 {
-    font-size: 2rem;
-  }
-  
+
   .stat-card {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
+    flex-direction: row;
+    text-align: left;
   }
-  
+
+  /* Footer: stack all columns */
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-contact p {
+    justify-content: center;
+  }
+
+  .footer-links ul {
+    align-items: center;
+  }
+}
+
+/* ─── Small Mobile (≤ 480px) ─────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Contact item: stack icon + text */
   .contact-item {
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    gap: 15px;
+    gap: 12px;
   }
-  
+
+  /* Testimonial */
   .testimonial-card {
-    padding: 30px 20px;
+    padding: 25px 16px;
   }
-  
-  .testimonial-content p {
-    font-size: 1.1rem;
+
+  .testimonial-author {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Stat: compact row stays readable */
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    padding: 10px;
+  }
+
+  /* Feature icon smaller on tiny screens */
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Submit button always full width */
+  .submit-btn {
+    font-size: 1rem;
+    padding: 14px 20px;
   }
 }
+
+/* ─── Utility / Misc ─────────────────────────────────────────── */
 
 /* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background-light);
-}
-
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--background-light); }
 ::-webkit-scrollbar-thumb {
   background: var(--gradient-primary);
   border-radius: 4px;
 }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
-}
-
-/* Loading States */
+/* Loading shimmer */
 .loading {
   position: relative;
   overflow: hidden;
 }
-
 .loading::after {
   content: '';
   position: absolute;
@@ -944,27 +987,16 @@ body {
   animation: loading 1.5s infinite;
 }
 
-@keyframes loading {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-/* Accessibility Improvements */
+/* Accessibility — reduce motion */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }
 
-/* Focus Styles */
+/* Focus styles */
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
@@ -973,7 +1005,7 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-/* High Contrast Mode Support */
+/* High contrast mode */
 @media (prefers-contrast: high) {
   :root {
     --shadow-light: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -982,14 +1014,12 @@ a:focus-visible {
   }
 }
 
-/* Print Styles */
+/* Print */
 @media print {
   .scroll-to-top,
   .newsletter-section,
-  .footer-social {
-    display: none;
-  }
-  
+  .footer-social { display: none; }
+
   * {
     box-shadow: none !important;
     text-shadow: none !important;
