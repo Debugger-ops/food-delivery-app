@@ -15,8 +15,8 @@
     "framer-motion": "^12.6.3",
     "lucide-react": "^0.507.0",
     "mongoose": "^8.13.2",
-    "next": "15.2.4",
-    "next-auth": "^4.24.11",
+    "next": "^16.1.6",
+    "next-auth": "next",
     "razorpay": "^2.9.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,6 +26,6 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "eslint": "^9",
-    "eslint-config-next": "15.2.4"
+    "eslint-config-next": "^16.1.6"
   }
 }
