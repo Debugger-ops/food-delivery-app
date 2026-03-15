@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import MenuItem from "../menu/MenuItem";
 import SectionHeaders from "./SectionHeaders";
-import "./menuhome.css";
+
 
 export default function HomeMenu() {
   const [bestSellers, setBestSellers] = useState([]);
