@@ -9,7 +9,7 @@
 }
 
 /* User tabs styling */
-.profile-page :global(.tabs) {
+.profile-page{
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
