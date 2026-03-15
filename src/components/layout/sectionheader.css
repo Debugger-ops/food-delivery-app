@@ -1,20 +1,41 @@
-/* SectionHeaders.module.css */
 .subHeader {
-    text-transform: uppercase;
-    color: orangered;
-    font-weight: 600;
-    text-align: center;
-    font-size: 1.6rem;
-    line-height: 1rem;
+  text-transform: uppercase;
+  color: orangered;
+  font-weight: 600;
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  line-height: 1.4;
+  margin: 0 auto;
+}
+
+.mainHeader {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 1rem;
+  color: orangered;
+  font-weight: bold;
+  font-size: clamp(1.75rem, 5vw, 3.25rem);
+  line-height: 1.2;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .subHeader {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
   }
-  
+
   .mainHeader {
-    text-align:center; ;
-    
-    margin-left: 100px; ;
-    color: orangered;
-    font-weight: bold;
-    font-size: 3.25rem; /* Equivalent to text-4xl */
-    
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
   }
-  
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .subHeader {
+    font-size: 1rem;
+  }
+
+  .mainHeader {
+    font-size: 1.75rem;
+  }
+}

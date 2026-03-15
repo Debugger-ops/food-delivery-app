@@ -72,12 +72,10 @@ export default function CartPage() {
   };
 
   // Subtotal & total
-let subtotal = 0;
-for (const p of cartProducts) {
-  subtotal += cartProductPrice(p); // ✅ already includes quantity
-}
-
-
+  let subtotal = 0;
+  for (const p of cartProducts) {
+    subtotal += cartProductPrice(p);
+  }
   subtotal = Math.max(0, subtotal);
 
   const deliveryFee = 5;
@@ -88,7 +86,7 @@ for (const p of cartProducts) {
       <div className="cart-container">
         <div className="empty-cart">
           <h2>Your shopping cart is empty 😔</h2>
-          <button 
+          <button
             onClick={() => router.push('/menu')}
             className="continue-shopping-btn"
           >
@@ -111,10 +109,6 @@ for (const p of cartProducts) {
           <div className="cart-section-header">
             <h2>Cart Items</h2>
           </div>
-
-          {cartProducts.length === 0 && (
-            <div className="empty-items-message">No items in your cart</div>
-          )}
 
           <div className="cart-items-list">
             {cartProducts.map((product, index) => (
@@ -139,19 +133,19 @@ for (const p of cartProducts) {
 
           <div className="summary-content">
             <div className="summary-row">
-              <span className="summary-label">Subtotal:</span>
+              <span className="summary-label">Subtotal</span>
               <span className="summary-value">₹{subtotal.toFixed(2)}</span>
             </div>
 
             <div className="summary-row">
-              <span className="summary-label">Delivery:</span>
+              <span className="summary-label">Delivery</span>
               <span className="summary-value">₹{deliveryFee.toFixed(2)}</span>
             </div>
+          </div>
 
-            <div className="summary-total">
-              <span className="total-label">Total:</span>
-              <span className="total-value">₹{total.toFixed(2)}</span>
-            </div>
+          <div className="summary-total">
+            <span className="total-label">Total</span>
+            <span className="total-value">₹{total.toFixed(2)}</span>
           </div>
 
           <div className="address-form">
@@ -161,7 +155,7 @@ for (const p of cartProducts) {
 
             <form onSubmit={proceedToCheckout}>
               <div className="address-inputs-container">
-                <AddressInputs 
+                <AddressInputs
                   addressProps={address}
                   setAddressProp={handleAddressChange}
                 />

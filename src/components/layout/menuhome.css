@@ -1,5 +1,6 @@
 /* MenuItemForm Component Styles */
 
+<<<<<<< HEAD
 .menu-item-form {
   max-width: 800px;
   margin: 0 auto;
@@ -20,12 +21,91 @@
   color: #374151;
   text-transform: uppercase;
   letter-spacing: 0.025em;
+=======
+.home-menu {
+  padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.decorative-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decorative-left {
+  position: absolute;
+  top: 20%;
+  left: -50px;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+  filter: blur(1px);
+}
+
+.decorative-right {
+  position: absolute;
+  top: 60%;
+  right: -50px;
+  opacity: 0.1;
+  transform: rotate(15deg);
+  filter: blur(1px);
+}
+
+@media (max-width: 600px) {
+  .decorative-left,
+  .decorative-right {
+    display: none;
+  }
+}
+
+/* ── Section Header ─────────────────────────────────── */
+.menu-header {
+  text-align: center;
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Carousel Container ─────────────────────────────── */
+.carousel-container {
+  position: relative;
+  max-width: 1400px;
+  /* Reserve exact space for nav buttons — matches button width + small gap */
+  padding: 0 48px;
+  margin: 0 auto;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    /* Buttons are 36px on mobile, so 40px clearance is enough */
+    padding: 0 40px;
+  }
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  /* No horizontal padding — let items handle their own gap */
+  padding: 0.75rem 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+>>>>>>> fe2d1e90 (Save all local changes before pulling)
 }
 
 .form-label:first-of-type {
   margin-top: 0;
 }
 
+<<<<<<< HEAD
 /* Input Fields */
 .form-input,
 .form-textarea,
@@ -37,9 +117,23 @@
   font-size: 1rem;
   transition: all 0.2s ease-in-out;
   background-color: #ffffff;
+=======
+/*
+  Each item is exactly (100% / itemsPerView) of the TRACK width.
+  The JS sets this inline via style={{ width: `${itemWidthPercent}%` }}.
+  The inner padding creates the visual gap between cards without
+  affecting the percentage width calculation.
+*/
+.carousel-item {
+  flex-shrink: 0;
+  /* DO NOT set width here — JS controls it inline */
+  padding: 0 0.5rem;
+>>>>>>> fe2d1e90 (Save all local changes before pulling)
   box-sizing: border-box;
+  animation: slideIn 0.6s ease-out;
 }
 
+<<<<<<< HEAD
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
@@ -122,6 +216,95 @@
   text-transform: uppercase;
   letter-spacing: 0.025em;
   font-size: 0.9rem;
+=======
+/* Tighten gap on very small screens */
+@media (max-width: 480px) {
+  .carousel-item {
+    padding: 0 0.3rem;
+  }
+}
+
+/* ── Navigation Buttons ─────────────────────────────── */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #e9ecef;
+  border-radius: 50%;
+  /* Fluid size: 40 px on mobile → 50 px on desktop */
+  width: clamp(36px, 4vw, 50px);
+  height: clamp(36px, 4vw, 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: bold;
+  color: #495057;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.7;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease,
+              color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: #ffffff;
+  color: #007bff;
+  border-color: #007bff;
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+}
+
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-btn:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/*
+  Buttons sit at the very edges of .carousel-container's padding area.
+  Using left/right: 0 keeps them inside the container without ever
+  clipping outside the viewport on any screen size.
+*/
+.carousel-btn-prev {
+  left: 0;
+}
+
+.carousel-btn-next {
+  right: 0;
+}
+
+.carousel-container:hover .carousel-btn {
+  opacity: 1;
+}
+
+/* ── Dot Indicators ─────────────────────────────────── */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: clamp(1rem, 3vw, 2rem);
+  position: relative;
+  z-index: 2;
+}
+
+.indicator {
+  width: clamp(8px, 1.5vw, 12px);
+  height: clamp(8px, 1.5vw, 12px);
+  border-radius: 50%;
+  border: none;
+  background: rgba(108, 117, 125, 0.3);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+>>>>>>> fe2d1e90 (Save all local changes before pulling)
 }
 
 .featured-label:hover {
@@ -145,6 +328,7 @@
   letter-spacing: 0.025em;
 }
 
+<<<<<<< HEAD
 .submit-button:hover:not(:disabled) {
   background-color: #2563eb;
   transform: translateY(-1px);
@@ -200,3 +384,26 @@
   border-color: #dc2626;
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
 }
+=======
+.indicator:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pause CSS animation on hover (does not affect JS-driven transform) */
+.carousel-container:hover .carousel-track {
+  animation-play-state: paused;
+}
+>>>>>>> fe2d1e90 (Save all local changes before pulling)
