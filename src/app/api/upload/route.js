@@ -3,12 +3,6 @@ import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import { NextResponse } from 'next/server';
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 export async function POST(req) {
   try {
     const formData = await req.formData();
